@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\MovieDB",
-    "\\MovieDB\\Controllers",
-    "\\MovieDB\\obj"
+    ""
   ],
-  "SelectedNode": "\\MovieDB",
+  "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

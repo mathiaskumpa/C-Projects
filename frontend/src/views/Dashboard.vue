@@ -17,19 +17,16 @@ onMounted(() => {
 <template>
   <div class="h-full flex flex-col">
     <div class="relative">
-      <video class="w-screen max-h-[75vh] object-cover" autoplay loop>
+      <video class="w-screen max-h-[50vh] object-cover" autoplay loop>
         <source src="@/assets/pexels.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="absolute top-0 h-full w-full">
-        <div
-          class="title_wrapper absolute bottom-0 p-12 left-0 right-0 w-full bg-gradient-to-t from-gray-950 to-gray-800/0"
-        >
-          <span class="text-white text-xl">Trending Today</span>
-          <h1 class="text-white text-6xl">
-            The Untold Story of the Great Journey
-          </h1>
-          <button class="bg-red-600 px-6 py-4 text-white">Watch It Now</button>
+
+        <div class="absolute bottom-0 w-full flex flex-col p-6 bg-gradient-to-t from-gray-950 to-gray-800/0">
+          <span class="text-xl text-white">Trending Today</span>
+          <span class="text-6xl text-white">The Butcher From The Dead Sea</span>
+          <button class="text-white bg-red-600 px-6 py-4 w-[150px] mt-3">Watch Now</button>
         </div>
       </div>
     </div>
@@ -38,7 +35,7 @@ onMounted(() => {
       <div class="grid grid-cols-3 gap-6">
         <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
       </div>
-    </div>
+      </div>
   </div>
 </template>
 <style scoped lang="scss">

@@ -1,38 +1,36 @@
 <script setup>
-import { onMounted, reactive } from "vue";
+import { reactive, ref } from "vue";
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:5232'
-axios.defaults.headers.common['Access-Allow-Origin'] = ['*']
-axios.defaults.headers.common['Access-Allow-Methods'] = ['POST', 'GET']
-
+const error = ref('')
 const form = reactive({
-    username: null,
-    password: null
+    UserName: null,
+    Password: null
 })
 
 async function login() {
-    const response = await axios.post('http://localhost:5232/api/users/login', form, {
-        withCredentials: true
-    })
-    console.log(response.data)
+    try {
+        const response = await axios.post('http://localhost:3000/api/users/login', form)
+        console.log(response.data)
+    } catch (e) {
+        if (e.response.status == 400) {
+            error.value = 'Login failed'
+        }
+    }
 }
-
-onMounted(() => {
-    axios.get('http://localhost:5232/api/users').then(data => {
-        console.log(data)
-    }).catch(e => console.error(e))
-})
 </script>
 <template>
     <form @submit.prevent="login()">
+        <div class="p-6 bg-red-100 text-red-700" v-if="error">
+            {{ error }}
+        </div>
         <div class="flex flex-col">
             <label for="username">Username</label>
-            <input type="text" id="username" required v-model="form.username" placeholder="Username" class="border p-3" />
+            <input type="text" id="username" required v-model="form.UserNamesername" placeholder="Username" class="border p-3" />
         </div>
         <div class="flex flex-col">
             <label for="password">Password</label>
-            <input type="text" id="password" required v-model="form.password" placeholder="Password" class="border p-3" />
+            <input type="password" id="password" required v-model="form.Password" placeholder="Password" class="border p-3" />
         </div>
 
         <div class="flex flex-col justify-center mt-3">

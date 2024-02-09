@@ -24,8 +24,9 @@ function openModal() {
     <nav>
       <div class="flex justify-between items-center w-full p-6 px-8">
         <div class="flex">
-          <span class="font-bold text-xl"> MovieDB </span>
+          <span class="font-bold text-xl"> Movie Database </span>
         </div>
+
 
         <div class="flex flex-row">
           <button
