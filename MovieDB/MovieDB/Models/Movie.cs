@@ -6,22 +6,13 @@ namespace MovieDB.Models
     {
         [Key]
         public int MovieID { get; set; }
+        public required string Title { get; set; }
 
-        [Required]
-        public string Title { get; set; }
-
-        [Required]
         public DateTime ReleaseDate { get; set; }
-
         public int Runtime { get; set; }
 
-        [Required]
-        public string Language { get; set; }
-
-        public decimal Budget { get; set; }
-
-        public decimal BoxOfficeRevenue { get; set; }
-
+        public required string Language { get; set; }
+        public string UploadPath { get; set; }
         // Navigation properties for relationships
         public int GenreID { get; set; }
         public Genre Genre { get; set; }

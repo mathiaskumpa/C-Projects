@@ -4,6 +4,20 @@ using Microsoft.EntityFrameworkCore;
 using MovieDB.Data;
 using MovieDB.Models;
 
+public class NewMovie
+{
+    public required string Title { get; set; }
+
+    public DateTime ReleaseDate { get; set; }
+    public int Runtime { get; set; }
+
+    public required string Language { get; set; }
+    public string UploadPath { get; set; }
+    // Rrelationships
+    public int GenreID { get; set; }
+    public int DirectorID { get; set; }
+}
+
 namespace MovieDB.Controllers
 {
     [Route("api/[controller]")]
@@ -40,11 +54,19 @@ namespace MovieDB.Controllers
 
         // POST: api/Movies
         [HttpPost]
-        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
+        public async Task<ActionResult<Movie>> PostMovie(NewMovie payload)
         {
+            var movie = new Movie
+            {
+              Title = payload.Title,
+              ReleaseDate = payload.ReleaseDate,
+              Language = payload.Language,
+              GenreID = payload.GenreID,
+              DirectorID = payload.DirectorID,
+              UploadPath = payload.UploadPath
+            };
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetMovie", new { id = movie.MovieID }, movie);
         }
 

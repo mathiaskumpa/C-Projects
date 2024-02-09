@@ -4,6 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using MovieDB.Data;
 using MovieDB.Models;
 
+public class NewDirector
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime BirthDate { get; set; }
+    public string Nationality { get; set; }
+}
+
 namespace MovieDB.Controllers
 {
     [Route("api/[controller]")]
@@ -40,8 +48,14 @@ namespace MovieDB.Controllers
 
         // POST: api/Directors
         [HttpPost]
-        public async Task<ActionResult<Director>> PostDirector(Director director)
+        public async Task<ActionResult<Director>> PostDirector(NewDirector payload)
         {
+            var director = new Director{
+                FirstName = payload.FirstName,
+                LastName = payload.LastName,
+                BirthDate = payload.BirthDate,
+                Nationality = payload.Nationality,
+            };
             _context.Directors.Add(director);
             await _context.SaveChangesAsync();
 

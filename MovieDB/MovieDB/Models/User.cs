@@ -8,7 +8,7 @@ namespace MovieDB.Models
         public int UserID { get; set; }
 
         [Required]
-        public string Role { get; set; }
+        public int RoleID { get; set; }
 
         [Required]
         public string UserName { get; set; }
@@ -31,5 +31,6 @@ namespace MovieDB.Models
 
         // Navigation properties for the Votes relationship
         public List<Vote> Votes { get; set; }
+        public Role Role { get; set; }
     }
 }

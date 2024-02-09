@@ -12,6 +12,6 @@ namespace MovieDB.Models
         public string RoleName { get; set; }
 
         // Navigation property for the UserRole relationship
-        public List<UserRole> UserRoles { get; set; }
+        
     }
 }

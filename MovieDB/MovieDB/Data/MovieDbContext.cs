@@ -16,7 +16,7 @@ namespace MovieDB.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Vote> Votes { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
+       
 
         // Add any other DbSet properties as needed
 

@@ -3,7 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieDB.Data;
 using MovieDB.Models;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
 
+
+public class NewGenre
+{
+    [Required]
+    public string Name { get; set; }
+
+    public string Description { get; set; }
+
+}
 namespace MovieDB.Controllers
 {
     [Route("api/[controller]")]
@@ -40,11 +51,15 @@ namespace MovieDB.Controllers
 
         // POST: api/Genres
         [HttpPost]
-        public async Task<ActionResult<Genre>> PostGenre(Genre genre)
+        public async Task<ActionResult<Genre>> PostGenre(NewGenre payload)
         {
+            var genre = new Genre 
+            { 
+                Name = payload.Name,
+                Description = payload.Description,
+            };
             _context.Genres.Add(genre);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetGenre", new { id = genre.GenreID }, genre);
         }
 
