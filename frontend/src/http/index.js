@@ -1,1 +1,0 @@
-const bakentUrl = 'http://localhost:3000/api'

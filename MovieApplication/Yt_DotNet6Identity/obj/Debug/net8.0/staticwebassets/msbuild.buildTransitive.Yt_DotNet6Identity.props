@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Yt_DotNet6Identity.props" />
+</Project>
